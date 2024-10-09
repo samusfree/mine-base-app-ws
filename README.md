@@ -48,13 +48,27 @@ This is a Flask application that includes API documentation using OpenAPI 3 and 
    export FLASK_ENV=development
    ```
 
-6. **Run the database migration scripts**:
+6. **Required Environment Variables**:
+
+    Make sure to set the following environment variables:
+
+    ```sh
+    export POSTGRES_USER=your_postgres_user
+    export POSTGRES_PASSWORD=your_postgres_password
+    export POSTGRES_HOST=your_postgres_host
+    export POSTGRES_PORT=your_postgres_port
+    export POSTGRES_DB=your_postgres_db
+    ```
+
+    Replace `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_HOST`, `POSTGRES_PORT`, and `POSTGRES_DB` with your actual values.
+
+7. **Run the database migration scripts**:
 
    ```sh
    flask db upgrade
    ```
 
-7. **Run the Flask application**:
+8. **Run the Flask application**:
 
    ```sh
    flask run
@@ -120,7 +134,7 @@ python -m pytest -s -m "integration"
 To build the Docker image for the application, use:
 
 ```sh
-docker build -t base-mine-app-ws .
+docker build -t mine-base-app-ws:latest .
 ```
 
 ### Running the Docker Container
@@ -128,7 +142,13 @@ docker build -t base-mine-app-ws .
 To run the Docker container, use:
 
 ```sh
-docker run -p 5000:5000 base-mine-app-ws
+docker run \
+-e POSTGRES_USER='your_postgres_user' \
+-e POSTGRES_PASSWORD='your_postgres_password' \
+-e POSTGRES_HOST='your_postgres_host' \
+-e POSTGRES_PORT='your_postgres_port' \
+-e POSTGRES_DB='your_postgres_db' \
+--name mine-base-app-ws-local -p 5000:5000 mine-base-app-ws:latest 
 ```
 
 The application will be available at
