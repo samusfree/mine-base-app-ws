@@ -27,7 +27,9 @@ def test_get_users(app, user_controller: UserController, user_service_mock):
         response = user_controller.get_users()
 
         assert response.status_code == 200
-        assert response.json == [{"id": 1, "name": "Test", "lastname": "User"}]
+        assert response.json == [
+            {"id": 1, "name": "Test", "lastname": "User"}
+        ]
 
 
 def test_get_user(app, user_controller, user_service_mock):
@@ -83,7 +85,10 @@ def test_create_user(
 
 
 def test_update_user(
-    app, user_controller: UserController, user_service_mock: UserService, mocker
+    app,
+    user_controller: UserController,
+    user_service_mock: UserService,
+    mocker,
 ):
     with app.app_context():
         mocker.patch(

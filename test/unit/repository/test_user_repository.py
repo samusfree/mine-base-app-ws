@@ -14,7 +14,9 @@ def test_get_all_users(app, user_repository, mocker):
     with app.app_context():
         scalars_mock = mocker.Mock()
         scalars_mock.all = mocker.Mock(
-            return_value=[User(name="Test", lastname="User", born="1990-01-01")]
+            return_value=[
+                User(name="Test", lastname="User", born="1990-01-01")
+            ]
         )
         session_mock = mocker.Mock()
         session_mock.scalars = mocker.Mock(return_value=scalars_mock)
@@ -35,7 +37,9 @@ def test_get_user_by_id(app, user_repository, mocker):
     with app.app_context():
         mocker.patch(
             "api.repository.user_repository.db.session.get",
-            return_value=User(name="Test", lastname="User", born="1990-01-01"),
+            return_value=User(
+                name="Test", lastname="User", born="1990-01-01"
+            ),
         )
 
         user = user_repository.get_by_id(1)
@@ -47,7 +51,9 @@ def test_get_user_by_id(app, user_repository, mocker):
 
 def test_create_user(app, user_repository, mocker):
     with app.app_context():
-        mock_add = mocker.patch("api.repository.user_repository.db.session.add")
+        mock_add = mocker.patch(
+            "api.repository.user_repository.db.session.add"
+        )
         mock_commit = mocker.patch(
             "api.repository.user_repository.db.session.commit"
         )

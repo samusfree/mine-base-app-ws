@@ -28,7 +28,7 @@ class UserController:
         data = request.get_json()
         validated_data = self.user_schema.load(data)
         user = self.user_service.create_user(validated_data)
-        return self.user_schema.jsonify(user)
+        return self.user_schema.jsonify(user), 201
 
     def update_user(self, user_id):
         user = self.user_service.get_user_by_id(user_id)

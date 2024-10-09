@@ -1,5 +1,7 @@
 import os
+from api.config.compress import compress_config
 from flask import Flask
+from api.config.logging import configure_logging
 from api.config.swagger import configureSwagger
 from api.route.main_route import register_routes
 from api.util.error_handlers import (
@@ -16,6 +18,7 @@ class APPInitializer:
 
     def init_app(self):
         app = Flask(__name__)
+        configure_logging(app)
         app.config.from_object(Config)
 
         container = APPContainer()
@@ -32,6 +35,8 @@ class APPInitializer:
         db.init_app(app)
 
         migrate.init_app(app, db)
+
+        compress_config(app)
 
         cors.init_app(app)
 

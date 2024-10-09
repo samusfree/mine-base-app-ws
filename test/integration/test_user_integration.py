@@ -23,7 +23,9 @@ def test_create_user_without_name(test_client):
     )
 
     assert response.status_code == 400
-    assert response.get_json() == {"name": ["Missing data for required field."]}
+    assert response.get_json() == {
+        "name": ["Missing data for required field."]
+    }
 
 
 def test_get_all_users_with_generic_exception(test_client, mocker):

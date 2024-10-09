@@ -193,5 +193,5 @@ def test_delete_user(app, mock_user_service, user_controller, mocker, client):
         response = client.delete("/api/v1/users/1")
 
         assert response.status_code == 204
-        assert response.json == None
+        assert response.json is None
         mock_user_service.delete_user.assert_called_once_with(1)
