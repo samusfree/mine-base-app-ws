@@ -1,22 +1,30 @@
 repos:
-  - repo: local
+  - repo: https://github.com/psf/black
+    rev: 23.1.0  # Use the latest stable version
     hooks:
-    - id: autoflake
-      name: Remove unused variables and imports
-      entry: bash -c 'autoflake "$@"; git add -u' -- # This runs autoflake and stages the reformatted python files before running autoflake again, which should then "pass"
-      language: python
-      args: ["--in-place", "--remove-all-unused-imports", "--remove-unused-variables", "--expand-star-imports", "--ignore-init-module-imports"]
-      files: \.py$
-    - id: isort
-      name: Sorting import statements
-      entry: bash -c 'isort "$@"; git add -u' --
-      language: python
-      args: ["--filter-files"]
-      files: \.py$
-    - id: black
-      name: Black Python code formatting
-      entry: bash -c 'black "$@"; git add -u' --
-      language: python
-      types: [python]
-      language_version: python3.12
-      args: ["--line-length=78"]
+      - id: black
+        args: ["--line-length", "80"]
+
+  - repo: https://github.com/myint/autoflake
+    rev: v1.4  # Use the latest stable version
+    hooks:
+      - id: autoflake
+        args: ["--remove-all-unused-imports", "--recursive", "--remove-unused-variables", "--in-place", "."]
+
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.10.1  # Use the latest stable version
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 5.0.4  # Use the latest stable version
+    hooks:
+      - id: flake8
+        args: ["--max-line-length", "80"]
+
+  - repo: https://github.com/pre-commit/mirrors-pylint
+    rev: v2.15.0  # Use the latest stable version
+    hooks:
+      - id: pylint
+        args: ["--rcfile=.pylintrc"]
