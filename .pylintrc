@@ -1,0 +1,12 @@
+[MAIN]
+
+ignore=CVS, .svn, .hg, .git, __pycache__, .tox, .eggs, *.egg, *.egg-info, .ropeproject, .venv, .vscode, .idea, .pytest, migrations, .mypy_cache, .pytest_cache, .gitignore, .gitattributes, .gitmodules, .gitkeep, .gitlab-ci.yml, .travis.yml, .coveragerc, .editorconfig, .flake8, .pylintrc, .gitignore, .gitattributes, .gitmodules, .gitkeep, .gitlab-ci.yml, .travis.yml, .coveragerc, .editorconfig, .flake8, .pylintrc, .dockerignore, .gitignore, .gitattributes, .gitmodules, .gitkeep, .gitlab-ci.yml, .travis.yml, .coveragerc, .editorconfig, .flake8, .pylintrc
+
+load-plugins=pylint_pytest
+
+# Disable the message, report, category or checker with the given id(s). You can either give multiple identifiers separated by comma (,) or put this option multiple times (only on the command line, not in the configuration file where it should appear only once).
+disable=
+    C0114,  # Missing module docstring
+    C0115,  # Missing class docstring
+    C0116,  # Missing function or method docstring
+    R0903,  # Too few public methods

@@ -1,4 +1,5 @@
 import pytest
+
 from api.model.user import User
 from api.repository.user_repository import UserRepository
 

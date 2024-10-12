@@ -1,5 +1,7 @@
 from datetime import date
+
 import pytest
+
 from api.controller.user_controller import UserController
 from api.exception.not_found_error import NotFoundError
 from api.model.user import User

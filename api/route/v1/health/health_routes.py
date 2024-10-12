@@ -20,9 +20,9 @@ def health():
                             properties:
                                 status:
                                     type: string
-                            example: 
+                            example:
                                 status : UP
         tags:
             - health
-        """
+    """
     return jsonify({"status": "UP"}), 200

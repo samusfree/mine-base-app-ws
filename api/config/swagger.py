@@ -1,8 +1,10 @@
 import json
+
 from apispec import APISpec
 from apispec.ext.marshmallow import MarshmallowPlugin
 from apispec_webframeworks.flask import FlaskPlugin
 from swagger_ui import flask_api_doc
+
 from api.schema.user_schema import UserSchema
 
 

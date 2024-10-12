@@ -1,7 +1,9 @@
 import os
-from flask_migrate import downgrade, upgrade
+
 import pytest
+from flask_migrate import downgrade, upgrade
 from testcontainers.postgres import PostgresContainer
+
 from api import APPInitializer
 
 

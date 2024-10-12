@@ -92,6 +92,12 @@ To remove all unused imports, use `autoflake`:
 autoflake --remove-all-unused-imports -r --in-place .
 ```
 
+To sort imports, use `isort`:
+
+```sh
+isort .
+```
+
 To check for code style issues, use `flake8`:
 
 - For api

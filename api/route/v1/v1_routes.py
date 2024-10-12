@@ -2,8 +2,8 @@ from flask import Blueprint, Flask
 
 from api.config.containers import APPContainer
 
-from .users import user_routes
 from .health import health_routes
+from .users import user_routes
 
 
 def register_v1_routes(app: Flask, v1: Blueprint, container: APPContainer):

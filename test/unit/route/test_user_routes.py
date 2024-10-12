@@ -1,7 +1,9 @@
 from datetime import date
+
 import pytest
-from api.model.user import User
+
 from api.controller.user_controller import UserController
+from api.model.user import User
 from api.service.user_service import UserService
 
 pytestmark = pytest.mark.unit

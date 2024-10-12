@@ -1,7 +1,9 @@
 import logging
 import traceback
+
 from flask import jsonify
 from marshmallow import ValidationError
+
 from api.exception.not_found_error import NotFoundError
 
 logger = logging.getLogger(__name__)

@@ -2,6 +2,7 @@ from dependency_injector.wiring import inject
 from flask import request
 
 from api.exception.not_found_error import NotFoundError
+
 from ..schema.user_schema import UserSchema
 from ..service.user_service import UserService
 

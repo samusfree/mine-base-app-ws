@@ -1,15 +1,16 @@
 import os
-from api.config.compress import compress_config
+
 from flask import Flask
+
+from api.config.compress import compress_config
 from api.config.logging import configure_logging
 from api.config.swagger import configureSwagger
 from api.route.main_route import register_routes
-from api.util.error_handlers import (
-    register_error_handlers,
-)
-from .config.containers import APPContainer
+from api.util.error_handlers import register_error_handlers
+
 from .config.config import Config
-from .config.extensions import migrate, cors, db
+from .config.containers import APPContainer
+from .config.extensions import cors, db, migrate
 
 
 class APPInitializer:

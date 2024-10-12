@@ -1,13 +1,14 @@
+import pytest
 from flask import Flask
 from flask.testing import FlaskClient
-import pytest
+
 from api import APPInitializer
 
 
 @pytest.fixture
 def app():
-    app = APPInitializer("unittest").init_app()
-    return app
+    app_unit = APPInitializer("unittest").init_app()
+    return app_unit
 
 
 @pytest.fixture

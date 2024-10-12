@@ -1,5 +1,6 @@
-from ..config.extensions import db
 from sqlalchemy import select
+
+from ..config.extensions import db
 from ..model.user import User
 
 

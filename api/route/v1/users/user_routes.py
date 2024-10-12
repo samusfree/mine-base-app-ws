@@ -1,8 +1,8 @@
-from flask import Blueprint
 from dependency_injector.wiring import Provide
+from flask import Blueprint
+
 from api.config.containers import APPContainer
 from api.controller.user_controller import UserController
-
 
 user_blueprint_v1 = Blueprint("user_bp", __name__)
 

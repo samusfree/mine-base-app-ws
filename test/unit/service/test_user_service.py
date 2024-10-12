@@ -1,8 +1,9 @@
 import pytest
 from pytest_mock import MockerFixture
-from api.service.user_service import UserService
-from api.repository.user_repository import UserRepository
+
 from api.model.user import User
+from api.repository.user_repository import UserRepository
+from api.service.user_service import UserService
 
 pytestmark = pytest.mark.unit
 
@@ -25,7 +26,7 @@ def test_get_all_users(user_service, mock_user_repository):
 
     users = user_service.get_all_users()
 
-    assert users.__len__() == 2
+    assert len(users) == 2
     assert users[0].id == 1
     assert users[0].name == "Test User"
     assert users[1].id == 2
