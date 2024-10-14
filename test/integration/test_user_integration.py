@@ -9,7 +9,7 @@ def test_create_user(test_client):
         json={"name": "Test", "lastname": "User", "born": "1990-01-01"},
     )
 
-    assert response.status_code == 200
+    assert response.status_code == 201
     data = response.get_json()
     assert data["name"] == "Test"
     assert data["lastname"] == "User"
@@ -23,9 +23,7 @@ def test_create_user_without_name(test_client):
     )
 
     assert response.status_code == 400
-    assert response.get_json() == {
-        "name": ["Missing data for required field."]
-    }
+    assert response.get_json() == {"name": ["Missing data for required field."]}
 
 
 def test_get_all_users_with_generic_exception(test_client, mocker):
@@ -94,6 +92,7 @@ def test_update_user_not_exists(test_client):
 def test_delete_user(test_client):
     response = test_client.delete("/api/v1/users/1")
     assert response.status_code == 204
+    assert response.get_json() is None
 
     # Verify the user is deleted
     response = test_client.get("/api/v1/users/1")

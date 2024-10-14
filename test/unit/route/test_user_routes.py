@@ -96,7 +96,8 @@ def test_create_user(app, mock_user_service, user_controller, mocker, client):
             json={"name": "Test", "lastname": "User", "born": "2024-10-04"},
         )
 
-        assert response.status_code == 200
+        print(response)
+        assert response.status_code == 201
         assert response.content_type == "application/json"
         assert response.json["id"] == 1
         assert response.json["name"] == "User"

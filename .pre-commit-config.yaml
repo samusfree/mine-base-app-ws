@@ -1,31 +1,24 @@
 repos:
-  - repo: https://github.com/psf/black
-    rev: 24.10.0  # Use the latest stable version
+  - repo: local
     hooks:
       - id: black
-        args: ["--line-length", "80"]
+        name: black
+        entry: black
+        fail_fast: true
+        language: python
+        types: [python]
         language_version: python3.12
-
-  - repo: https://github.com/myint/autoflake
-    rev: v2.3.1  # Use the latest stable version
-    hooks:
       - id: autoflake
-        args: ["--remove-all-unused-imports", "--recursive", "--remove-unused-variables", "--in-place", "."]
-
-  - repo: https://github.com/PyCQA/isort
-    rev: 5.13.2  # Use the latest stable version
-    hooks:
+        name: autoflake
+        entry: autoflake
+        fail_fast: true
+        language: python
       - id: isort
-        args: ["--profile", "black"]
-
-  - repo: https://github.com/pycqa/flake8
-    rev: 7.1.1  # Use the latest stable version
-    hooks:
-      - id: flake8
-        args: ["--max-line-length", "80"]
-
-  - repo: https://github.com/pylint-dev/pylint
-    rev: v3.3.1  # Use the latest stable version
-    hooks:
-      - id: pylint
-        args: ["--rcfile=.pylintrc"]
+        name: isort
+        entry: isort
+        fail_fast: true
+        language: python
+      - id: prospector
+        name: prospector
+        entry: prospector
+        language: python

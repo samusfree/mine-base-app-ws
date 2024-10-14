@@ -9,7 +9,7 @@ from api import APPInitializer
 
 @pytest.fixture(scope="module")
 def test_client():
-    postgres = PostgresContainer("postgres:13")
+    postgres = PostgresContainer("postgres:16")
     postgres.start()
 
     os.environ["POSTGRES_URL"] = postgres.get_connection_url()

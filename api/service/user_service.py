@@ -1,8 +1,7 @@
 from dependency_injector.wiring import inject
 
+from api.model.user import User
 from api.repository.user_repository import UserRepository
-
-from ..model.user import User
 
 
 class UserService:

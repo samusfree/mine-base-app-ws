@@ -81,7 +81,7 @@ This is a Flask application that includes API documentation using OpenAPI 3 and 
 To format the code, use `black` with a line length of 78 characters:
 
 ```sh
-black --line-length 78 .
+black --line-length 80 .
 ```
 
 ## Linting
@@ -89,27 +89,47 @@ black --line-length 78 .
 To remove all unused imports, use `autoflake`:
 
 ```sh
-autoflake --remove-all-unused-imports -r --in-place .
+autoflake --remove-all-unused-imports -r --remove-unused-variables --in-place .
 ```
 
 To sort imports, use `isort`:
 
 ```sh
-isort .
+isort .  --profile black
 ```
 
-To check for code style issues, use `flake8`:
+To lint the code using `pylint`:
 
-- For api
+```sh
+pylint --rcfile=.pylintrc --output-format=colorized .
+```
 
-  ```sh
-  flake8 api/
-  ```
+To lint the code using `prospector`:
 
-- For test
-  ```sh
-  flake8 test/
-  ```
+```sh
+prospector
+```
+
+## Pre-commit Hooks
+To set up pre-commit hooks, follow these steps:
+
+1. **Install pre-commit**:
+
+   ```sh
+   pip install pre-commit
+   ```
+
+2. **Install the pre-commit hooks**:
+   ```sh
+   pre-commit install
+   ```
+
+3. **Run the pre-commit hooks on all files**:
+   ```sh
+   pre-commit run --all-files
+   ```
+
+After that every commit will run the pre-commit hooks
 
 ## API Documentation
 
@@ -198,7 +218,7 @@ This project is licensed under the MIT License.
 1. **Required Tools**: Lists the tools required to run the application.
 2. **Run on Local**: Steps to create and activate a virtual environment, install dependencies, and run the Flask application locally.
 3. **Code Formatting**: Instructions for formatting code using `black`.
-4. **Linting**: Instructions for removing unused imports using `autoflake` and checking code style issues using `flake8`.
+4. **Linting**: Instructions for removing unused imports using `autoflake`, sort imports with `isortp`, checking code style issues using `flake8` and linting the code using `pylint`.
 5. **API Documentation**: Information about accessing the Swagger UI for API documentation.
 6. **Running Tests**: Instructions for running unit and integration tests using `pytest`.
 7. **Docker**: Instructions for building and running the Docker image.

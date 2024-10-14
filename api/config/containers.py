@@ -1,8 +1,8 @@
 from dependency_injector import containers, providers
 
-from ..controller.user_controller import UserController
-from ..repository.user_repository import UserRepository
-from ..service.user_service import UserService
+from api.controller.user_controller import UserController
+from api.repository.user_repository import UserRepository
+from api.service.user_service import UserService
 
 
 class APPConfig(containers.DeclarativeContainer):

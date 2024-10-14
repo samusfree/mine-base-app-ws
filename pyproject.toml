@@ -1,0 +1,53 @@
+[tool.black]
+line-length = 80
+target-version = ['py312']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 80
+known_first_party = ["api"]
+known_third_party = ["flask", "dependency_injector"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+default_section = "THIRDPARTY"
+skip = ["migrations", ".venv", ".tox", "build", "dist"]
+
+[tool.autoflake]
+remove-all-unused-imports = true
+ignore-init-module-imports = true
+remove-unused-variables = true
+expand-star-imports = true
+in-place = true
+recursive = true
+
+[tool.pytest.ini_options]
+testpaths = [
+    "test/unit",
+    "test/integration",
+]
+markers = [
+    "unit: mark a test as a unit test",
+    "integration: mark test as integration test",
+]
+
+[tool.coverage.run]
+omit = [
+    "api/__init__.py",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

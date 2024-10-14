@@ -24,16 +24,14 @@ def handle_not_found_error(err):
 
 
 def handle_generic_error(err: Exception):
-    logger.error(f"{err}\n{traceback.format_exc()}", exc_info=True)
-    # print(traceback.format_exc())
-
+    logger.error("%s\n%s", err, traceback.format_exc(), exc_info=True)
     response = jsonify({"error": "An unexpected error occurred"})
     response.status_code = 500
     return response
 
 
 def handle_404_error(err):
-    logger.error(f"{err}\n{traceback.format_exc()}", exc_info=True)
+    logger.error(err, exc_info=True)
     response = jsonify({"error": "Page not found"})
     response.status_code = 404
     return response

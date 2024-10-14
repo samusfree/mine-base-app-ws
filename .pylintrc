@@ -1,12 +1,131 @@
-[MAIN]
+[MASTER]
 
-ignore=CVS, .svn, .hg, .git, __pycache__, .tox, .eggs, *.egg, *.egg-info, .ropeproject, .venv, .vscode, .idea, .pytest, migrations, .mypy_cache, .pytest_cache, .gitignore, .gitattributes, .gitmodules, .gitkeep, .gitlab-ci.yml, .travis.yml, .coveragerc, .editorconfig, .flake8, .pylintrc, .gitignore, .gitattributes, .gitmodules, .gitkeep, .gitlab-ci.yml, .travis.yml, .coveragerc, .editorconfig, .flake8, .pylintrc, .dockerignore, .gitignore, .gitattributes, .gitmodules, .gitkeep, .gitlab-ci.yml, .travis.yml, .coveragerc, .editorconfig, .flake8, .pylintrc
+# Add files or directories to the blacklist. They should be base names, not paths.
+ignore=CVS, .svn, .hg, .git, __pycache__, .tox, .eggs, *.egg, *.egg-info, .ropeproject, .venv, .vscode, .idea, .pytest, migrations, .mypy_cache, .pytest_cache, .gitignore, .gitattributes, .gitmodules, .gitkeep, .gitlab-ci.yml, .travis.yml, .coveragerc, .editorconfig, .flake8, .pylintrc, .dockerignore
 
+# A comma-separated list of package or module names from where C extensions may be loaded.
+extension-pkg-whitelist=dependency_injector
+
+# Load plugins
 load-plugins=pylint_pytest
 
 # Disable the message, report, category or checker with the given id(s). You can either give multiple identifiers separated by comma (,) or put this option multiple times (only on the command line, not in the configuration file where it should appear only once).
 disable=
+    E0015,  # Unrecognized option
     C0114,  # Missing module docstring
     C0115,  # Missing class docstring
-    C0116,  # Missing function or method docstring
+    C0116,  # Missing function or method docstring1
     R0903,  # Too few public methods
+
+# Maximum number of characters on a single line.
+max-line-length=80
+
+# Add directories to the source roots.
+source-roots=api, test
+
+# 
+; This configuration file is for Pylint, a Python static code analysis tool.
+; The 'init-hook' option is used to execute a Python statement before Pylint starts.
+; In this case, it appends the current directory (".") to the system path (sys.path).
+; This allows Pylint to recognize and analyze modules in the current directory.
+init-hook='import sys; sys.path.append(".")'
+
+[REPORTS]
+# Set the output format. Available formats are text, parseable, colorized, json and msvs (visual studio).
+output-format=text
+
+# Tells whether to display a full report or only the messages.
+reports=no
+
+[REFACTORING]
+# Maximum number of nested blocks for function / method body
+max-nested-blocks=5
+
+[FORMAT]
+# Regexp for a line that is allowed to be longer than the limit.
+ignore-long-lines=^\s*(# )?<?https?://\S+>?$
+
+[DESIGN]
+# Maximum number of arguments for function / method.
+max-args=5
+
+# Maximum number of attributes for a class (see R0902).
+max-attributes=10
+
+# Maximum number of boolean expressions in an if statement.
+max-bool-expr=5
+
+# Maximum number of branch for function / method body.
+max-branches=12
+
+# Maximum number of locals for function / method body.
+max-locals=15
+
+# Maximum number of parents for a class (see R0901).
+max-parents=7
+
+# Maximum number of public methods for a class (see R0904).
+max-public-methods=20
+
+# Minimum number of public methods for a class (see R0903).
+min-public-methods=2
+
+[IMPORTS]
+# Allow wildcard imports from modules that define __all__.
+allow-wildcard-with-all=no
+
+# Analyse import fallback blocks. This can be used to support both Python 2 and 3 compatible code, which means that the block might have code that exists only in one or another interpreter, leading to false positives when analysed.
+analyse-fallback-blocks=no
+
+# Deprecated modules which should not be used, separated by a comma.
+deprecated-modules=
+
+[LOGGING]
+# Logging modules to check that the string format arguments are in logging function parameter format
+logging-modules=logging
+
+[MISCELLANEOUS]
+# List of note tags to take in consideration, separated by a comma.
+notes=FIXME,XXX,TODO
+
+[SIMILARITIES]
+# Minimum lines number of a similarity.
+min-similarity-lines=4
+
+[VARIABLES]
+# Tells whether we should check for unused import in __init__ files.
+init-import=no
+
+# A regular expression matching the name of dummy variables (i.e. expectedly not used).
+dummy-variables-rgx=_|dummy
+
+# List of additional names supposed to be defined in builtins. Remember that you should avoid defining new builtins when possible.
+additional-builtins=
+
+# List of strings which can identify a callback function by name. A callback name must start or end with one of those strings.
+callbacks=
+
+[TYPECHECK]
+# List of module names for which member attributes should not be checked (useful for modules/projects where namespaces are manipulated during runtime and thus existing member attributes cannot be deduced by static analysis). It supports qualified module names, as well as Unix pattern matching.
+ignored-modules=
+
+# List of classes names for which member attributes should not be checked (useful for classes with attributes dynamically set).
+ignored-classes=
+
+# List of members which are set dynamically and missed by pylint inference system, and so shouldn't trigger E1101 when accessed. Python regular expressions are accepted.
+generated-members=container.*,APPContainer.*
+
+[CLASSES]
+# List of method names used to declare (i.e. assign) instance attributes.
+defining-attr-methods=__init__,__new__,setUp
+
+# List of valid names for the first argument in a class method.
+valid-classmethod-first-arg=cls
+
+# List of valid names for the first argument in a metaclass class method.
+valid-metaclass-classmethod-first-arg=mcs
+
+[EXCEPTIONS]
+# Exceptions that will emit a warning when being caught. Defaults to "Exception"
+overgeneral-exceptions=builtins.BaseException,
+                       builtins.Exception

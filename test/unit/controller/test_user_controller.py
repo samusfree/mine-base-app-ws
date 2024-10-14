@@ -29,9 +29,7 @@ def test_get_users(app, user_controller: UserController, user_service_mock):
         response = user_controller.get_users()
 
         assert response.status_code == 200
-        assert response.json == [
-            {"id": 1, "name": "Test", "lastname": "User"}
-        ]
+        assert response.json == [{"id": 1, "name": "Test", "lastname": "User"}]
 
 
 def test_get_user(app, user_controller, user_service_mock):
@@ -77,7 +75,7 @@ def test_create_user(
 
         response = user_controller.create_user()
 
-        assert response.status_code == 200
+        assert response.status_code == 201
         assert response.json == {
             "id": 1,
             "name": "Test",
@@ -131,7 +129,8 @@ def test_delete_user(app, user_controller, user_service_mock):
     with app.app_context():
         response = user_controller.delete_user(1)
         user_service_mock.delete_user.assert_called_once_with(1)
-        assert response == ("", 204)
+        assert response.status_code == 204
+        assert response.json is None
 
 
 def test_delete_user_no_exists(app, user_controller, user_service_mock):

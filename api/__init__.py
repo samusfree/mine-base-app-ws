@@ -3,14 +3,13 @@ import os
 from flask import Flask
 
 from api.config.compress import compress_config
-from api.config.logging import configure_logging
-from api.config.swagger import configureSwagger
+from api.config.config import Config
+from api.config.containers import APPContainer
+from api.config.extensions import cors, db, migrate
+from api.config.logging_config import configure_logging
+from api.config.swagger import configure_swagger
 from api.route.main_route import register_routes
 from api.util.error_handlers import register_error_handlers
-
-from .config.config import Config
-from .config.containers import APPContainer
-from .config.extensions import cors, db, migrate
 
 
 class APPInitializer:
@@ -47,6 +46,6 @@ class APPInitializer:
 
         register_error_handlers(app)
 
-        configureSwagger(app)
+        configure_swagger(app)
 
         return app

@@ -1,0 +1,62 @@
+# Configuration for Prospector
+
+# Specify the libraries used in the project
+uses:
+  - flask
+
+# Specify the pylint configuration file
+pylint:
+  config-file: .pylintrc
+  
+# Specify the mccabe complexity threshold
+mccabe:
+  max-complexity: 10
+
+# Specify the paths to ignore
+ignore-paths:
+  - .git
+  - __pycache__
+  - .venv
+  - .tox
+  - build
+  - dist
+  - migrations
+  - .pylintrc
+
+# Specify the output format
+output-format: text
+
+# Specify whether to show full reports or only messages
+reports: full
+
+# Specify the maximum number of nested blocks for function/method body
+max-nested-blocks: 5
+
+# Specify the maximum number of arguments for function/method
+max-args: 5
+
+# Specify the maximum number of attributes for a class
+max-attributes: 10
+
+# Specify the maximum number of boolean expressions in an if statement
+max-bool-expr: 5
+
+# Specify the maximum number of branches for function/method body
+max-branches: 12
+
+# Specify the maximum number of locals for function/method body
+max-locals: 15
+
+# Specify the maximum number of parents for a class
+max-parents: 7
+
+# Specify the maximum number of public methods for a class
+max-public-methods: 20
+
+# Specify the strictness level
+stricteness: veryhigh
+
+# Activate unit test warnings
+test-warnings: true
+
+member-warnings: true
