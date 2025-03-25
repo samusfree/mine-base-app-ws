@@ -2,7 +2,7 @@ apispec==6.6.1
 apispec-webframeworks==1.2.0
 autoflake==2.3.1
 black==24.10.0
-dependency-injector==4.42.0
+dependency-injector==4.46.0
 Flask==3.0.3
 Flask-Compress==1.15
 Flask-Cors==5.0.0
@@ -14,7 +14,7 @@ isort==5.13.2
 marshmallow==3.22.0
 marshmallow-sqlalchemy==1.1.0
 pre_commit==4.0.1
-psycopg2-binary==2.9.9
+psycopg[binary]==3.2.6
 prospector==1.12.1
 pylint-pytest==1.1.8
 pytest==8.2.0

@@ -1,7 +1,7 @@
 import logging
 import traceback
 
-from flask import jsonify
+from flask import jsonify, request
 from marshmallow import ValidationError
 
 from api.exception.not_found_error import NotFoundError
@@ -31,8 +31,8 @@ def handle_generic_error(err: Exception):
 
 
 def handle_404_error(err):
-    logger.error(err, exc_info=True)
-    response = jsonify({"error": "Page not found"})
+    logger.error("Page not found : " + request.url, exc_info=True)
+    response = jsonify({"error": "Page not found", "url": request.path})
     response.status_code = 404
     return response
 
